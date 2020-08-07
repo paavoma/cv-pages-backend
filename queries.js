@@ -8,7 +8,7 @@ const client = new Client({
 });
 
 const getAllData = (request, response) => {
-    pool.query('SELECT  data -> \'sections\' AS sections FROM pagecontent', (error, results) => {
+    client.query('SELECT  data -> \'sections\' AS sections FROM pagecontent', (error, results) => {
       if (error) {
         throw error
       }
