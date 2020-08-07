@@ -1,7 +1,11 @@
 const poolCredentials = require('./config');
-
-const Pool = require('pg').Pool
-const pool = new Pool(poolCredentials);
+const { Client } = require('pg');
+const client = new Client({
+    connectionString: process.env.DATABASE_URL,
+    ssl: {
+      rejectUnauthorized: false
+    }
+});
 
 const getAllData = (request, response) => {
     pool.query('SELECT  data -> \'sections\' AS sections FROM pagecontent', (error, results) => {
