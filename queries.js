@@ -6,6 +6,7 @@ const client = new Client({
       rejectUnauthorized: false
     }
 });
+client.connect();
 
 const getAllData = (request, response) => {
     client.query('SELECT  data -> \'sections\' AS sections FROM pagecontent', (error, results) => {
